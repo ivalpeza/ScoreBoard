@@ -1,19 +1,18 @@
-Ovaj projekt omogućava praćenje rezultata utakmica, sortiranje i ažuriranje rezultata za sportsku ligu. Korištenjem klase Scoreboard, moguće je započeti nove utakmice, ažurirati rezultate i završiti utakmice. Utakmice se pohranjuju u listu i mogu se sortirati prema ukupnom broju golova.
+# Live Football World Cup Scoreboard
+Ova Java biblioteka omogućava praćenje nogometnih utakmica u stvarnom vremenu, uključujući pokretanje utakmica, ažuriranje rezultata, završavanje utakmica i dobivanje sažetka utakmica u tijeku.
 
-Kako koristiti
-Pokrenite Main.java:
+Funkcionalnosti:
+1. Pokretanje nove utakmice 
+   Omogućava započinjanje nove utakmice između domaćeg i gostujućeg tima s početnim rezultatom 0 – 0.
+2. Ažuriranje rezultata utakmice 
+   Omogućava ažuriranje rezultata za domaći i gostujući tim.
+3. Završavanje utakmice   
+   Omogućava završavanje utakmice, čime se uklanja iz popisa utakmica u tijeku.
+4. Dohvaćanje sortiranog sažetka utakmice   
+   Omogućava dohvaćanje svih utakmica koje su u tijeku, sortirane prema ukupnom broju golova. Ako su ukupni golovi isti, utakmice će biti sortirane prema vremenu početka (novije utakmice dolaze prve).
+## Strukturiranje projekta
 
-Projekt uključuje nekoliko testnih utakmica u funkciji main, gdje možete vidjeti kako se koristi klasa Scoreboard.
-Dodavanje utakmica:
-
-Utakmice se dodaju s početnim rezultatom 0-0.
-Ažuriranje rezultata:
-
-Rezultate utakmica možete ažurirati pomoću metode updateScore.
-Završavanje utakmica:
-
-Utakmica se završava i uklanja iz liste pomoću metode finishMatch.
-Testiranje
-Projekt uključuje testove koji pokrivaju osnovne funkcionalnosti aplikacije, uključujući dodavanje utakmica, ažuriranje rezultata i završavanje utakmica.
-
-
+- Match.java: Predstavlja jednu utakmicu.
+- Scoreboard.java: Glavna logika za upravljanje utakmicama.
+- ScoreboardTest.java: Testovi koji provjeravaju funkcionalnost.
+- Main.java: Glavna klasa koja prikazuje osnovnu upotrebu.
