@@ -14,28 +14,31 @@ public class Scoreboard {
 
     // Ažuriranje rezultata utakmice
     public void updateScore(String homeTeam, String awayTeam, int homeScore, int awayScore) {
-        matches.stream()
-                .filter(match -> match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam))
+        Match match = matches.stream()
+                .filter(m -> m.getHomeTeam().equals(homeTeam) && m.getAwayTeam().equals(awayTeam))
                 .findFirst()
-                .ifPresent(match -> {
-                    match.setHomeScore(homeScore);
-                    match.setAwayScore(awayScore);
-                    match.setMatchStatus(Match.MatchStatus.IN_PROGRESS); // Status je IN_PROGRESS dok utakmica traje
-                });
+                .orElseThrow(() -> new IllegalArgumentException("Utakmica nije pronađena!"));
+
+        match.setHomeScore(homeScore);
+        match.setAwayScore(awayScore);
     }
 
-    // Završi utakmicu i ukloni ju sa popisa
+    // Završi utakmicu i ukloni je iz liste
     public void finishMatch(String homeTeam, String awayTeam) {
-        matches.stream()
-                .filter(match -> match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam))
-                .findFirst()
-                .ifPresent(match -> match.setMatchStatus(Match.MatchStatus.FINISHED));
+        matches.removeIf(match -> match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam));
     }
 
     // Dohvati sve utakmice koje su u tijeku
     public List<Match> getOngoingMatches() {
         return matches.stream()
                 .filter(match -> match.getMatchStatus() == Match.MatchStatus.IN_PROGRESS)
+                .collect(Collectors.toList());
+    }
+
+    // Dohvati sve završene utakmice
+    public List<Match> getFinishedMatches() {
+        return matches.stream()
+                .filter(match -> match.getMatchStatus() == Match.MatchStatus.FINISHED)
                 .collect(Collectors.toList());
     }
 

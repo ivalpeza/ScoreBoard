@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Scoreboard scoreboard = new Scoreboard();
+        Scoreboard scoreboard = new Scoreboard(); // Kreiramo novi objekt za vođenje utakmica.
 
         // Pokretanje utakmica s timovima iz Serie A
         scoreboard.startMatch("Juventus", "AC Milan");
